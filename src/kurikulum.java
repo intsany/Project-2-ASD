@@ -1,15 +1,15 @@
 import java.io.IOException;
 
 public class kurikulum {
-    public Matakuliah[] mk;
+    public mataKuliah[] mk;
     public int jumlah;
-    public TabelHash indeks;
-    public GrafPrasyarat graf;
+    public tabelHash indeks;
+    public grafPrasyarat graf;
 
     public void muatMatakuliah(String path) throws IOException {
         String[] baris = Berkas.bacaBaris(path);
-        mk = new Matakuliah[baris.length];
-        indeks = new TabelHash(64);
+        mk = new mataKuliah[baris.length];
+        indeks = new tabelHash(64);
         jumlah = 0;
         for (int i = 1; i < baris.length; i++) {
             String b = baris[i].trim();
@@ -17,7 +17,7 @@ public class kurikulum {
             String[] f = b.split(";");
             if (f.length < 5) throw new IOException("Baris matakuliah.csv tidak valid: " + b);
             try {
-                mk[jumlah] = new Matakuliah(f[0].trim(), f[1].trim(),
+                mk[jumlah] = new mataKuliah(f[0].trim(), f[1].trim(),
                         Integer.parseInt(f[2].trim()), Integer.parseInt(f[3].trim()), f[4].trim());
             } catch (NumberFormatException e) {
                 throw new IOException("SKS/semester bukan angka pada baris: " + b);
@@ -29,7 +29,7 @@ public class kurikulum {
 
     public void muatPrasyarat(String path) throws IOException {
         String[] baris = Berkas.bacaBaris(path);
-        graf = new GrafPrasyarat(jumlah);
+        graf = new grafPrasyarat(jumlah);
         for (int i = 1; i < baris.length; i++) {
             String b = baris[i].trim();
             if (b.isEmpty()) continue;

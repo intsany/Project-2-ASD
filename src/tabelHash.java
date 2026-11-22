@@ -1,4 +1,4 @@
-public class TabelHash {
+public class tabelHash{
     private static class Entri {
         final String kunci;
         int nilai;
@@ -9,7 +9,7 @@ public class TabelHash {
     private Entri[] bucket;
     private int ukuran = 0;
 
-    public TabelHash(int kapasitasAwal) {
+    public tabelHash(int kapasitasAwal) {
         bucket = new Entri[kapasitasAwal];
     }
 
@@ -29,7 +29,6 @@ public class TabelHash {
         if (ukuran > bucket.length * 3 / 4) rehash();    // jaga load factor <= 0.75
     }
 
-    /** @return nilai untuk kunci, atau -1 bila tidak ada. */
     public int ambil(String kunci) {
         int b = hash(kunci, bucket.length);
         for (Entri e = bucket[b]; e != null; e = e.next) {

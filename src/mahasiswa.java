@@ -1,12 +1,12 @@
 import java.io.IOException;
 
-public class Mahasiswa {
+public class mahasiswa {
     public String namaBerkas;
     public String semesterBerikutnya;   // "Ganjil" atau "Genap"
     public boolean[] lulus;             // lulus[i] = true bila MK dengan indeks i sudah lulus
 
-    public static Mahasiswa baca(String path, Kurikulum k) throws IOException {
-        Mahasiswa m = new Mahasiswa();
+    public static mahasiswa baca(String path, kurikulum k) throws IOException {
+        mahasiswa m = new mahasiswa();
         m.namaBerkas = path;
         m.lulus = new boolean[k.jumlah];
         String[] baris = Berkas.bacaBaris(path);
